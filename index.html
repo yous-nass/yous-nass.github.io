@@ -1,74 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Personal Homepage</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #f4f7fb;
-            color: #333;
-            margin: 0;
-            padding: 80px 20px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #0969da;
-        }
-
-        a {
-            color: #0969da;
-            text-decoration: none;
-        }
-
-        .button {
-            display: inline-block;
-            background: #0969da;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Youssouf Nasseri — developer, numerical simulation, and machine learning.">
+  <title>Youssouf Nasseri | Reseacher ingeneer</title>
+  <style>
+    :root { --bg:#07111f; --panel:#0c192a; --line:#1b3048; --text:#f4f7fb; --muted:#b2c1d4; --blue:#2da8ff; --cyan:#39d7ef; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--text); background:radial-gradient(ellipse at 80% 10%,#0c2850 0,transparent 32%),var(--bg); line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1100px,calc(100% - 40px)); margin:auto; }
+    header { border-bottom:1px solid rgba(130,170,210,.12); position:sticky; top:0; z-index:10; backdrop-filter:blur(14px); background:rgba(7,17,31,.88); }
+    nav { min-height:70px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { font-size:1.2rem; font-weight:800; letter-spacing:-.03em; display:flex; align-items:center; gap:10px; }
+    .brand-mark { color:var(--blue); font-size:1.6rem; font-weight:900; }
+    .navlinks { display:flex; gap:25px; color:var(--muted); font-size:.94rem; }
+    .navlinks a:hover, .textlink:hover { color:var(--cyan); }
+    .hero { padding:85px 0 78px; display:grid; grid-template-columns:1.15fr .85fr; gap:55px; align-items:center; }
+    .eyebrow { color:var(--cyan); font-size:.85rem; text-transform:uppercase; letter-spacing:.13em; font-weight:750; }
+    h1 { margin:12px 0 8px; font-size:clamp(2.6rem,6vw,4.5rem); line-height:1.05; letter-spacing:-.055em; }
+    .gradient { color:var(--blue); }
+    .subtitle { font-size:1.25rem; color:#e4edf8; margin:16px 0; }
+    .intro { color:var(--muted); max-width:590px; font-size:1.05rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:12px 19px; border-radius:9px; font-weight:700; border:1px solid var(--line); }
+    .primary { background:linear-gradient(110deg,#087be8,#12a8f5); border-color:transparent; box-shadow:0 8px 25px #0786e533; }
+    .btn:hover { transform:translateY(-2px); }
+    .codecard { border:1px solid #244261; background:linear-gradient(145deg,rgba(16,38,62,.94),rgba(6,15,28,.98)); border-radius:16px; overflow:hidden; box-shadow:0 25px 80px #0005; transform:rotate(1deg); }
+    .windowbar { padding:14px 17px; border-bottom:1px solid var(--line); display:flex; gap:7px; }
+    .dot { width:10px;height:10px;border-radius:50%; background:#ff5f57; } .dot:nth-child(2){background:#febc2e}.dot:nth-child(3){background:#28c840}
+    pre { margin:0; padding:28px 24px 32px; color:#d8e8f7; font: .96rem/1.9 ui-monospace,SFMono-Regular,Menlo,monospace; white-space:pre-wrap; }
+    .comment { color:#7f9ab5; } .key { color:#44d9f1; } .value { color:#8dc5ff; }
+    section { padding:42px 0; border-top:1px solid rgba(130,170,210,.12); }
+    .section-kicker { color:var(--cyan); text-transform:uppercase; font-size:.78rem; font-weight:800; letter-spacing:.12em; }
+    h2 { margin:4px 0 24px; font-size:1.8rem; letter-spacing:-.03em; }
+    .skills { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .skill { text-align:center; padding:22px 12px; background:rgba(12,25,42,.72); border:1px solid var(--line); border-radius:12px; }
+    .skill-icon { font-size:1.8rem; color:var(--blue); font-weight:800; display:block; margin-bottom:6px; }
+    .skill small { color:var(--muted); }
+    .about-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:35px; align-items:start; }
+    .about-grid p { color:var(--muted); margin-top:0; }
+    .note { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:22px; }
+    .project-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .project { background:linear-gradient(145deg,#0d1b2d,#091421); border:1px solid var(--line); border-radius:13px; padding:22px; display:flex; flex-direction:column; min-height:220px; }
+    .project h3 { margin:0 0 8px; } .project p { color:var(--muted); font-size:.94rem; margin:0 0 18px; }
+    .tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:auto; }
+    .tag { font-size:.76rem; background:#142d48; color:#c6e4ff; border-radius:20px; padding:4px 9px; }
+    .contact { display:flex; justify-content:space-between; gap:24px; align-items:center; background:linear-gradient(110deg,#0b2542,#0b1727); border:1px solid #1e4264; border-radius:15px; padding:28px; }
+    .contact p { color:var(--muted); margin:5px 0 0; }
+    footer { border-top:1px solid rgba(130,170,210,.12); padding:24px 0; color:#91a6bf; font-size:.86rem; }
+    .footer-inner { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    @media(max-width:760px) { .navlinks{gap:12px;font-size:.82rem}.hero{grid-template-columns:1fr;gap:35px;padding:58px 0}.skills{grid-template-columns:repeat(2,1fr)}.about-grid,.project-grid{grid-template-columns:1fr}.contact{align-items:flex-start;flex-direction:column} }
+    @media(max-width:440px) { .navlinks a:nth-child(2),.navlinks a:nth-child(3){display:none}.wrap{width:min(100% - 28px,1100px)} }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>Hello, I'm Youssouf Nasseri 👋</h1>
+  <!-- Replace YOUR_GITHUB_USERNAME below with your actual GitHub login (no spaces). -->
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="#home"><span class="brand-mark">&lt;/&gt;</span> Youssouf Nasseri</a>
+      <div class="navlinks">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">Hello, I'm</div>
+        <h1>Youssouf <span class="gradient">Nasseri</span></h1>
+        <div class="subtitle">Scientific computing · Numerical simulation · Machine learning</div>
+        <p class="intro">I enjoy building useful things with code, learning new technologies, and turning ideas into practical projects. I'm currently developing my skills in Python, C++, and web development.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore my projects ↗</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="codecard" aria-label="Decorative code illustration">
+        <div class="windowbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <pre><span class="comment">// A little about how I build</span>
+<span class="key">const</span> developer = {
+  name: <span class="value">"Youssouf"</span>,
+  languages: [<span class="value">"Python"</span>, <span class="value">"C++"</span>],
+  web: [<span class="value">"HTML"</span>, <span class="value">"CSS"</span>],
+  versionControl: <span class="value">"Git"</span>,
+  mindset: <span class="value">"Always learning"</span>
+};
 
-        <p>Welcome to my personal homepage!</p>
-
-        <p>
-            I'm interested in technology, programming,
-            and building exciting projects.
-        </p>
-
-        <h2>About Me</h2>
-        <p>
-            This is my personal website where you can discover
-            my projects, skills, and experience.
-        </p>
-
-        <h2>Scientif computing and machine learning</h2>
-        <p>More projects coming soon!</p>
-
-        <a class="button"
-           href="https://github.com/yous-nass">
-            Visit My GitHub
-        </a>
+<span class="key">while</span> (curious) {
+  buildSomething();
+}</pre>
+      </div>
     </div>
+
+    <section id="skills"><div class="wrap">
+      <div class="section-kicker">Technical skills</div><h2>Tools I work with</h2>
+      <div class="skills">
+        <div class="skill"><span class="skill-icon">Py</span><strong>Python</strong><br><small>Scripting & problem solving</small></div>
+        <div class="skill"><span class="skill-icon">C++</span><strong>C++</strong><br><small>Programming fundamentals</small></div>
+        <div class="skill"><span class="skill-icon">&lt;/&gt;</span><strong>HTML</strong><br><small>Web page structure</small></div>
+        <div class="skill"><span class="skill-icon">⑂</span><strong>Git</strong><br><small>Version control</small></div>
+      </div>
+    </div></section>
+
+    <section id="about"><div class="wrap">
+      <div class="section-kicker">A little introduction</div><h2>About me</h2>
+      <div class="about-grid">
+        <p>I'm Youssouf Nasseri, a developer who enjoys exploring how software works and creating projects that solve real problems. I like learning by doing, improving my code step by step, and collaborating through tools like Git.</p>
+        <div class="note"><strong>What I'm focused on</strong><p style="margin:8px 0 0">Strengthening my Python and C++ skills, building web projects with HTML, and sharing my progress through GitHub.</p></div>
+      </div>
+    </div></section>
+
+    <section id="projects"><div class="wrap">
+      <div class="section-kicker">Selected work</div><h2>Featured projects</h2>
+      <div class="project-grid">
+        <article class="project"><h3>Python Projects</h3><p>Small programs, scripts, and experiments built while learning Python and solving problems.</p><div class="tags"><span class="tag">Python</span><span class="tag">Learning</span></div></article>
+        <article class="project"><h3>C++ Practice</h3><p>Programming exercises focused on logic, algorithms, and core C++ concepts.</p><div class="tags"><span class="tag">C++</span><span class="tag">Algorithms</span></div></article>
+        <article class="project"><h3>Personal Website</h3><p>This responsive portfolio, built with HTML and CSS and published using GitHub Pages.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">GitHub Pages</span></div></article>
+      </div>
+      <p style="color:var(--muted);margin-top:18px;font-size:.9rem">These are starter project cards. Replace them with your real repositories when you're ready.</p>
+      <a class="textlink" href="https://github.com/yous-nass?tab=repositories">Browse my GitHub repositories →</a>
+    </div></section>
+
+    <section id="contact"><div class="wrap">
+      <div class="contact"><div><div class="section-kicker">Contact</div><h2 style="margin-bottom:0">Let's connect</h2><p>Have an idea or want to talk about code? Find me on GitHub.</p></div>
+      <a class="btn primary" href="https://github.com/yous-nass">Visit my GitHub ↗</a></div>
+    </div></section>
+  </main>
+  <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Youssouf Nasseri</span><span>Built with HTML & CSS · Hosted on GitHub Pages</span></div></footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
